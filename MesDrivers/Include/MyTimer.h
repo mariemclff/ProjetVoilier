@@ -14,12 +14,13 @@ unsigned short PSC ;
 * @brie f
 * @param -> Paramè t r e sous forme d ’ une s t r u c t u r e ( son a d re s se ) con ten an t l e s
 i n f o rm a ti o n s de base
-* @Note -> F onc ti on à l a n c e r s y s t ématiquement avan t d ’ a l l e r pl u s en dé t a i l dans l e s
-con f pl u s f i n e s (PWM, codeur i n c . . . )
+* @Note -> Fonction à lancer systématiquement avant d’aller plus en détail dans les
+conf plus fines (PWM, codeur inc . . . )
 *************************************************************************************************
 */
 void MyTimer_Base_Init ( MyTimer_Struct_TypeDef * Timer ) ;
 void MyTimer_Base_Start ( MyTimer_Struct_TypeDef * Timer );
 void MyTimer_Base_Stop ( MyTimer_Struct_TypeDef * Timer ) ;
 void MyTimer_ActiveIT ( MyTimer_Struct_TypeDef * Timer , char Prio ) ;
+void MyTimer_Set_CI ( MyTimer_Struct_TypeDef * Timer , int ARR ) ;
 #endif
