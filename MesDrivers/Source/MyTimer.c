@@ -59,3 +59,11 @@ void MyTimer_ActiveIT ( MyTimer_Struct_TypeDef * Timer , char Prio ) {
 		TIM4->DIER |= 0x01;
 	}
 }
+
+void MyTimer_Set_CI ( MyTimer_Struct_TypeDef * Timer , int ARR ) {
+	
+	// SET EN SUIVANT LA DOC
+	
+	Timer->ARR = ARR ;
+	
+}
