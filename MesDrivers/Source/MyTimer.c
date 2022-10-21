@@ -62,7 +62,11 @@ void MyTimer_ActiveIT ( MyTimer_Struct_TypeDef * Timer , char Prio ) {
 
 void MyTimer_Set_CI ( MyTimer_Struct_TypeDef * Timer , int ARR ) {
 	
-	// SET EN SUIVANT LA DOC
+	// SET EN SUIVANT LA DOC : on met SMS à 011, permet de récupérer signaux A et B de la girouette
+	Timer->Timer->SMCR ^= ~(0x0111) ;
+	Timer->Timer->SMCR |= 0x1011 ;
+	
+	
 	
 	Timer->ARR = ARR ;
 	
