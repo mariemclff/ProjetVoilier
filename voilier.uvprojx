@@ -382,16 +382,36 @@
       <Groups>
         <Group>
           <GroupName>MesDrivers</GroupName>
+          <Files>
+            <File>
+              <FileName>MyGPIO.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MesDrivers\Source\MyGPIO.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyTimer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MesDrivers\Source\MyTimer.c</FilePath>
+            </File>
+            <File>
+              <FileName>MyGPIO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\MesDrivers\Include\MyGPIO.h</FilePath>
+            </File>
+            <File>
+              <FileName>MyTimer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\MesDrivers\Include\MyTimer.h</FilePath>
+            </File>
+            <File>
+              <FileName>macro.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\MesDrivers\Include\macro.h</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>MesSources</GroupName>
-          <Files>
-            <File>
-              <FileName>main.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Source\main.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>::CMSIS</GroupName>
