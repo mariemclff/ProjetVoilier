@@ -33,7 +33,7 @@ void MyTimer_Base_Stop( MyTimer_Struct_TypeDef *  Timer ) {
 	Timer->Timer->DIER ^= 0x01;
 }
 
-void MyTimer_ActiveIT ( MyTimer_Struct_TypeDef * Timer , char Prio,vo id (* IT_function ) ( void ) ) {
+void MyTimer_ActiveIT ( MyTimer_Struct_TypeDef * Timer , char Prio,void (* IT_function ) ( void ) ) {
 	Timer ->Timer-> DIER |= 0x01;
 	if (Timer-> Timer == TIM1){
 		NVIC->ISER[0] = 0x01 << 25;
@@ -94,3 +94,6 @@ void MyTimer_Set_CI ( MyTimer_Struct_TypeDef * Timer , int ARR ) {
 	// On le fait déjà dans la fonction start : Timer->Timer->CR1 |= 0x01 ;
 	
 }
+
+void MyTimer_PWM( TIM_TypeDef * Timer , char Channel ){
+	

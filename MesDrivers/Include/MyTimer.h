@@ -21,6 +21,7 @@ conf plus fines (PWM, codeur inc . . . )
 void MyTimer_Base_Init ( MyTimer_Struct_TypeDef * Timer ) ;
 void MyTimer_Base_Start ( MyTimer_Struct_TypeDef * Timer );
 void MyTimer_Base_Stop ( MyTimer_Struct_TypeDef * Timer ) ;
-void MyTimer_ActiveIT ( MyTimer_Struct_TypeDef * Timer , char Prio ) ;
+void MyTimer_ActiveIT ( MyTimer_Struct_TypeDef * Timer , char Prio,void (* IT_function ) ( void ) ) ;
 void MyTimer_Set_CI ( MyTimer_Struct_TypeDef * Timer , int ARR ) ;
+void MyTimer_PWM( TIM_TypeDef * Timer , char Channel ); 
 #endif
