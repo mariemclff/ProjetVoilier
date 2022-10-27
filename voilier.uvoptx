@@ -246,7 +246,11 @@
 
   <Group>
     <GroupName>MesSources</GroupName>
+<<<<<<< HEAD
     <tvExp>0</tvExp>
+=======
+    <tvExp>1</tvExp>
+>>>>>>> ca645524e54e46f07d8fbd22b28a7e64d6b978a6
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
