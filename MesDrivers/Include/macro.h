@@ -8,10 +8,10 @@
 #define PinChannel1 6 //Channel1 PA6
 #define PinChannel2 7 //Channel2 PA7
 
-#define Bidon1  //GPIOC8 -> entree cap
-#define Bidon2 //GPIOC9->sortie cap
-#define Bidon3 //GPIOC10->sortie PWM
-
-#define Tim_Cap TIM2  
+#define TimerCap TIM2
+#define GPIOCap GPIOC
+#define PinCapIn 8 //PC8 pour l'entrée
+#define PinCapOut1 9 //PC9 pour une des sorties
+#define PinCapOut2 10 //PC10 pour l'autre
 
 #endif

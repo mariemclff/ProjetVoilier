@@ -95,8 +95,49 @@ void MyTimer_Set_CI ( MyTimer_Struct_TypeDef * Timer , int ARR ) {
 	
 }
 
+
 void MyTimer_Set_CNT ( MyTimer_Struct_TypeDef * Timer , int init) {
 	
 	Timer->Timer->CNT = init ;
+	
+}
+
+void MyTimer_PWM( MyTimer_Struct_TypeDef * Timer , char Channel ){
+	switch(Channel){
+	case '1' :
+		Timer->Timer->CCMR1 &= ~(0x110 << 4);
+		Timer->Timer->CCMR1 |= (0x110 <<4);
+		Timer->Timer->CCER &= ~0;
+		Timer->Timer->CCER |= 1;
+		Timer ->Timer -> CCR1 = 0;
+	break;
+	case '2' :
+		Timer->Timer->CCMR1 &= ~(0x110 << 12);
+		Timer->Timer->CCMR1 |= (0x110 <<12);
+		Timer->Timer->CCER &= ~0;
+		Timer->Timer->CCER |= 1;
+		Timer ->Timer -> CCR2 = 0;
+	break;
+	case '3' :
+		Timer->Timer->CCMR2 &= ~(0x110 << 4);
+		Timer->Timer->CCMR2 |= (0x110 <<4);
+		Timer->Timer->CCER &= ~0;
+		Timer->Timer->CCER |= 1;
+		Timer ->Timer -> CCR3 = 0;
+	break;					
+	case '4' :
+		Timer->Timer->CCMR2 &=~(0x110 << 12);
+		Timer->Timer->CCMR2 |= (0x110 <<12);
+		Timer->Timer->CCER &= ~0;
+		Timer->Timer->CCER |= 1;
+		Timer ->Timer -> CCR4 = 0;
+	break;
+	default:
+	break;
+}
+}
+	
+int set_rap_cyc ( int angle_wind){
+	//int angle_wind ;
 	
 }
