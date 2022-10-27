@@ -25,3 +25,6 @@
 **/Objects/
 **/Listings/
 **/Debug/
+**/DebugConfig/
+**/RTE/
+*.mecaliff
