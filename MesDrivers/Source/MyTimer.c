@@ -4,7 +4,7 @@
 #include "math.h"
 
 
-
+void (*fonc) (void);
 void MyTimer_Base_Init ( MyTimer_Struct_TypeDef * Timer ) {
 	
 	if (Timer-> Timer == TIM2){
@@ -33,30 +33,32 @@ void MyTimer_Base_Stop( MyTimer_Struct_TypeDef *  Timer ) {
 	Timer->Timer->DIER ^= 0x01;
 }
 
-void MyTimer_ActiveIT ( MyTimer_Struct_TypeDef * Timer , char Prio ) {
+void MyTimer_ActiveIT ( MyTimer_Struct_TypeDef * Timer , char Prio,vo id (* IT_function ) ( void ) ) {
 	Timer ->Timer-> DIER |= 0x01;
 	if (Timer-> Timer == TIM1){
 		NVIC->ISER[0] = 0x01 << 25;
 		NVIC_EnableIRQ((IRQn_Type )(25));
 		NVIC->IP [25] = Prio << 4;
 		TIM1->DIER |= 0x01;
+		fonc =IT_function;
 	}else if (Timer-> Timer == TIM2 ) {
 		NVIC->ISER[0] = 0x01 << 28;
 		NVIC_EnableIRQ((IRQn_Type )28);
 		NVIC->IP [28] = Prio << 4;
 		TIM2->DIER |= 0x01;
-		
+		fonc =IT_function;
 	}else if (Timer-> Timer == TIM3) {
 		NVIC->ISER[0] = 0x01 << 29;
 		NVIC_EnableIRQ((IRQn_Type )29);
 		NVIC->IP [29] = Prio << 4;
 		TIM3->DIER |= 0x01;
-	
+	fonc =IT_function;
 	} else if ( Timer-> Timer == TIM4 ) {
 		NVIC->ISER[0] = 0x01 << 30;
 		NVIC_EnableIRQ((IRQn_Type )30);
 		NVIC->IP [30] = Prio << 4;
 		TIM4->DIER |= 0x01;
+		fonc =IT_function;
 	}
 }
 
