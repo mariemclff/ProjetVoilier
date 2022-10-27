@@ -6,8 +6,7 @@
 
 
 
-typedef struct
-{
+typedef struct{
 	GPIO_TypeDef * GPIO ;
 	char GPIO_Pin ; //numero de 0 a 15
 	char GPIO_Conf ; // v o i r c i de s sou s
