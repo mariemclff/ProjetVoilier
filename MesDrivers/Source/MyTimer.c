@@ -63,11 +63,32 @@ void MyTimer_ActiveIT ( MyTimer_Struct_TypeDef * Timer , char Prio ) {
 void MyTimer_Set_CI ( MyTimer_Struct_TypeDef * Timer , int ARR ) {
 	
 	// SET EN SUIVANT LA DOC : on met SMS à 011, permet de récupérer signaux A et B de la girouette
+	
+	// CC1S = 01
+	Timer->Timer->CCMR1 &= ~(0x011) ;
+	Timer->Timer->CCMR1 |= 0x01 ;
+	
+	//CC2S = 01
+	Timer->Timer->CCMR1 &= ~(0x011 << 8) ;
+	Timer->Timer->CCMR1 |= 0x01 << 8 ;
+	
+	//CC1P = 0
+	Timer->Timer->CCER &= ~(0x010) ;
+	Timer->Timer->CCER |= 0x10 ;
+	//CC2P = 0
+	Timer->Timer->CCER &= ~(0x01 <<5) ;
+	Timer->Timer->CCER |= 0x10 << 5 ;
+	
+	//IC1F = 0000
+	Timer->Timer->CCMR1 &= ~(0x1111 << 4) ;
+	
+	//IC2F = 0000
+	Timer->Timer->CCMR1 &= ~(0x1111 << 12) ;
+	
 	Timer->Timer->SMCR ^= ~(0x0111) ;
 	Timer->Timer->SMCR |= 0x1011 ;
 	
-	
-	
 	Timer->ARR = ARR ;
+	// On le fait déjà dans la fonction start : Timer->Timer->CR1 |= 0x01 ;
 	
 }
