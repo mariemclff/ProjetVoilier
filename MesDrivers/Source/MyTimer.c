@@ -102,7 +102,17 @@ void MyTimer_Set_CNT ( MyTimer_Struct_TypeDef * Timer , int init) {
 	
 }
 
+<<<<<<< HEAD
 void MyTimer_PWM( TIM_TypeDef * Timer , char Channel ){
+=======
+int MyTimer_Get_CNT ( MyTimer_Struct_TypeDef * Timer ) {
+	
+	return Timer->Timer->CNT ;
+	
+}
+
+void MyTimer_PWM( MyTimer_Struct_TypeDef * Timer , char Channel ){
+>>>>>>> b783453dd4afe244ebc9a63b201a1199765fcbe1
 	switch(Channel){
 	case '1' :
 		Timer->CCMR1 &= ~(0x110 << 4);
