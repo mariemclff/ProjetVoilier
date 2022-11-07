@@ -102,6 +102,12 @@ void MyTimer_Set_CNT ( MyTimer_Struct_TypeDef * Timer , int init) {
 	
 }
 
+int MyTimer_Get_CNT ( MyTimer_Struct_TypeDef * Timer ) {
+	
+	return Timer->Timer->CNT ;
+	
+}
+
 void MyTimer_PWM( MyTimer_Struct_TypeDef * Timer , char Channel ){
 	switch(Channel){
 	case '1' :

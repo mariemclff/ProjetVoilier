@@ -1,11 +1,13 @@
 #include  "MyGPIO.h"
 #include  "MyTimer.h"
+#include  "serv.h"
 #include  "macro.h"
-
 
 int main () {
 
 	int test = 0 ;
+	int alpha = 999 ;
+	
 	MyTimer_Struct_TypeDef TimerStruct ;
 	MyGPIO_Struct_TypeDef GPIOIndex , GPIOCH1 , GPIOCH2 ;
 
@@ -42,7 +44,12 @@ int main () {
 	
 	MyTimer_Set_CNT ( &TimerStruct , 0 ) ;
 	
-	while(1) ;
+	while(1) {
+		
+		alpha = MyTimer_Get_CNT ( &TimerStruct ) ;
+		//fonction servo (alpha) qui bouge servo selon les critères demandés
+		
+	}
 	
 	return 0;
 

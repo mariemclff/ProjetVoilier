@@ -24,5 +24,6 @@ void MyTimer_Base_Stop ( MyTimer_Struct_TypeDef * Timer ) ;
 void MyTimer_ActiveIT ( MyTimer_Struct_TypeDef * Timer , char Prio,void (* IT_function ) ( void ) ) ;
 void MyTimer_Set_CI ( MyTimer_Struct_TypeDef * Timer , int ARR ) ;
 void MyTimer_Set_CNT ( MyTimer_Struct_TypeDef * Timer , int init) ;
+int MyTimer_Get_CNT ( MyTimer_Struct_TypeDef * Timer ) ;
 void MyTimer_PWM( MyTimer_Struct_TypeDef * Timer , char Channel ); 
 #endif

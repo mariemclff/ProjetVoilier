@@ -8,6 +8,8 @@
 #define PinChannel1 6 //Channel1 PA6
 #define PinChannel2 7 //Channel2 PA7
 
+// VALEURS ANGLES
+
 #define TimerCap TIM2
 #define GPIOCap GPIOC
 #define PinCapIn 8 //PC8 pour l'entrée
