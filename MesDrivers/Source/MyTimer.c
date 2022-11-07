@@ -142,8 +142,5 @@ void MyTimer_PWM( MyTimer_Struct_TypeDef * Timer , char Channel ){
 	break;
 }
 }
-	
-int set_rap_cyc ( int angle_wind){
-	//int angle_wind ;
-	
+
 }
