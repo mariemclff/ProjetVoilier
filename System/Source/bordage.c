@@ -26,7 +26,7 @@ int main () {
 	//set up structure Timer
 
 		TimerStruct.Timer = TimerBordage  ;
-		TimerStruct.ARR = 360 ;
+		TimerStruct.ARR = 1439 ;
 	
 	 
 	MyGPIO_Init (&GPIOIndex) ;
@@ -41,5 +41,9 @@ int main () {
 	}
 	
 	MyTimer_Set_CNT ( &TimerStruct , 0 ) ;
+	
+	while(1) ;
+	
+	return 0;
 
 }
