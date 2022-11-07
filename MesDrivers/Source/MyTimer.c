@@ -64,8 +64,6 @@ void MyTimer_ActiveIT ( MyTimer_Struct_TypeDef * Timer , char Prio,void (* IT_fu
 
 void MyTimer_Set_CI ( MyTimer_Struct_TypeDef * Timer , int ARR ) {
 	
-	
-	
 	// CC1S = 01
 	Timer->Timer->CCMR1 &= ~(0x3) ;
 	Timer->Timer->CCMR1 |= 0x01 ;
@@ -141,6 +139,4 @@ void MyTimer_PWM( MyTimer_Struct_TypeDef * Timer , char Channel ){
 	default:
 	break;
 }
-}
-
 }

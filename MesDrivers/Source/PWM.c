@@ -9,33 +9,33 @@ PSC prescaler permet de ralentir la freq pour trouver un diviseur commun*/
 int set_rap_cyc ( int angle_wind){
 	int cycle ;
 	
-	if angle_wind <= 45 {
+	if (angle_wind <= 45) {
 		cycle = 5;
 	}
-	else if (angle_wind > 45 && < 68) {
+	else if ((angle_wind > 45) && (angle_wind < 68)) {
 		cycle = 6;
 	}
-	else if (angle_wind >= 68 && < 90) {
+	else if ((angle_wind >= 68) && (angle_wind < 90)) {
 		cycle = 7;	}
-	else if (angle_wind >=90 && < 113) {
+	else if ((angle_wind >=90) && (angle_wind < 113)) {
 		cycle = 8;
 	}
-	else if (angle_wind >=113 && < 135) {
+	else if ((angle_wind >=113 ) && (angle_wind < 135)) {
 		cycle = 9;
 	}
-	else if (angle_wind >=135 && < 225) {
+	else if ((angle_wind >=135 ) && (angle_wind < 225)) {
 		cycle = 10;
 	}
-	else if (angle_wind >=225 && < 248) {
+	else if ((angle_wind >=225 ) && (angle_wind < 248)) {
 		cycle = 9;
 	}
-	else if (angle_wind >=248 && < 270) {
+	else if ((angle_wind >=248 ) && (angle_wind < 270)) {
 		cycle = 8;
 	}
-	else if (angle_wind >=270 && < 293) {
+	else if ((angle_wind >=270 ) && (angle_wind < 293)) {
 		cycle = 7;
 	}
-	else if (angle_wind > 293 && < 315) {
+	else if ((angle_wind > 293 ) && (angle_wind < 315)) {
 		cycle = 6;
 	}
 	else if (angle_wind >= 315) {

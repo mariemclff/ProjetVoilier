@@ -46,7 +46,9 @@ int main () {
 	
 	while(1) {
 		
-		alpha = MyTimer_Get_CNT ( &TimerStruct ) ;
+		//on divise par 4 le chiffre r&cupéré sur le compteur pour retrouver l'angle car l'ARR impose une précision au quart de degré
+		alpha = MyTimer_Get_CNT ( &TimerStruct ) >> 2 ;
+		
 		//fonction servo (alpha) qui bouge servo selon les critères demandés
 		
 	}
