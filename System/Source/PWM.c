@@ -53,13 +53,11 @@ void init (void){
 	MyTimer_Set_CI(TimerCap);
 }
 
-void rapport_pwm (MyTimer_Struct_TypeDef TimerStruct, int canal){
-	
-	MyTimer_PWM (TimerCap, canal);
-	int cycle = set_rap_cyc;
-		switch(Channel){
+void rapport_pwm (TIM_TypeDef Timer, int canal){
+	int Cycle;
+		switch(canal){
 			case '1' :
-				Timer -> CCR1 -> ARR * Cycle / 100;
+				Timer.CCR1 = ARR * Cycle / 100;
 			break;
 			case '2' :
 				Timer -> CCR2 -> ARR * Cycle / 100;

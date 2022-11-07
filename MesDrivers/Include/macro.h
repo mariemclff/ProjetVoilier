@@ -16,8 +16,8 @@
 #define PinCapOut1 9 //PC9 pour une des sorties
 #define PinCapOut2 10 //PC10 pour l'autre
 
-#define PWM_RAPPORT_CYCLIQUE 
-#define PWM_ARR
+#define PWM_RAPPORT_CYCLIQUE 3600
+#define PWM_ARR 100
 #define PWM_PSC (PWM_RAPPORT_CYCLIQUE/PWM_ARR)
 
 #endif
