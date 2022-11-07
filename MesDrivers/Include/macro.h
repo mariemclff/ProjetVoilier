@@ -4,7 +4,9 @@
 
 #define TimerBordage TIM3
 #define GPIOBordage GPIOA 
-#define PinBordage 8 //PA8
+#define PinIndex 8 //PA8
+#define PinChannel1 6 //Channel1 PA6
+#define PinChannel2 7 //Channel2 PA7
 
 #define TimerCap TIM2
 #define GPIOCap GPIOC

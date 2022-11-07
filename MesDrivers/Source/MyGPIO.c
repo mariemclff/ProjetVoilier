@@ -13,7 +13,11 @@ RCC->APB2ENR |= (0x01 << 2) | (0x01 << 3) | (0x01 << 4) ;
 }
 
 int MyGPIO_Read ( GPIO_TypeDef * GPIO , char GPIO_Pin ){
-	return GPIO->IDR & (1<<GPIO_Pin) << GPIO_Pin;
+	int rrdata = GPIO->IDR;
+	rrdata = rrdata & (1<<GPIO_Pin);
+	
+	return rrdata >> GPIO_Pin;
+	//return GPIO->IDR & (1<<GPIO_Pin) >> GPIO_Pin;
 }
 	
 void MyGPIO_Set ( GPIO_TypeDef * GPIO , char GPIO_Pin ) {
@@ -26,3 +30,4 @@ void MyGPIO_Toggle ( GPIO_TypeDef * GPIO , char GPIO_Pin ) {
 	GPIO->IDR ^= 1 << GPIO_Pin;
 }
 	
+
