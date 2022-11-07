@@ -130,8 +130,7 @@ void MyTimer_PWM( TIM_TypeDef * Timer , char Channel ){
 }
 }
 	
-int set_rap_cyc ( int angle_wind){
-	int angle_wind ;
+
 	
 	
 	
