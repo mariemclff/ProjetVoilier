@@ -107,36 +107,36 @@ int MyTimer_Get_CNT ( MyTimer_Struct_TypeDef * Timer ) {
 	
 }
 
-void MyTimer_PWM( TIM_TypeDef * Timer , char Channel ){
+void MyTimer_PWM( MyTimer_Struct_TypeDef * Timer , char Channel ){
 
 	switch(Channel){
 	case '1' :
-		Timer ->CCMR1 &= ~(0x110 << 4);
-		Timer->CCMR1 |= (0x110 <<4);
-		Timer->CCER &= ~0;
-		Timer->CCER |= 1;
-		Timer -> CCR1 = 0;
+		Timer ->Timer ->CCMR1 &= ~(0x110 << 4);
+		Timer->Timer ->CCMR1 |= (0x110 <<4);
+		Timer->Timer ->CCER &= ~0;
+		Timer->Timer ->CCER |= 1;
+		Timer ->Timer -> CCR1 = 0;
 	break;
 	case '2' :
-		Timer->CCMR1 &= ~(0x110 << 12);
-		Timer->CCMR1 |= (0x110 <<12);
-		Timer->CCER &= ~0;
-		Timer->CCER |= 1;
-		Timer -> CCR2 = 0;
+		Timer->Timer ->CCMR1 &= ~(0x110 << 12);
+		Timer->Timer ->CCMR1 |= (0x110 <<12);
+		Timer->Timer ->CCER &= ~0;
+		Timer->Timer ->CCER |= 1;
+		Timer -> Timer ->CCR2 = 0;
 	break;
 	case '3' :
-		Timer->CCMR2 &= ~(0x110 << 4);
-		Timer->CCMR2 |= (0x110 <<4);
-		Timer->CCER &= ~0;
-		Timer->CCER |= 1;
-		Timer -> CCR3 = 0;
+		Timer->Timer ->CCMR2 &= ~(0x110 << 4);
+		Timer->Timer ->CCMR2 |= (0x110 <<4);
+		Timer->Timer ->CCER &= ~0;
+		Timer->Timer ->CCER |= 1;
+		Timer ->Timer -> CCR3 = 0;
 	break;					
 	case '4' :
-		Timer->CCMR2 &=~(0x110 << 12);
-		Timer->CCMR2 |= (0x110 <<12);
-		Timer->CCER &= ~0;
-		Timer->CCER |= 1;
-		Timer -> CCR4 = 0;
+		Timer->Timer ->CCMR2 &=~(0x110 << 12);
+		Timer->Timer ->CCMR2 |= (0x110 <<12);
+		Timer->Timer ->CCER &= ~0;
+		Timer->Timer ->CCER |= 1;
+		Timer ->Timer -> CCR4 = 0;
 	break;
 	default:
 	break;

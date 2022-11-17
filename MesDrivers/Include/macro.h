@@ -20,6 +20,21 @@
 #define PWM_ARR 100
 #define PWM_PSC (PWM_RAPPORT_CYCLIQUE/PWM_ARR)
 
+typedef struct
+{
+TIM_TypeDef * Timer ; // TIM1 à TIM4
+unsigned short ARR ;
+unsigned short PSC ;
+} MyTimer_Struct_TypeDef ;
+
+
+typedef struct{
+	GPIO_TypeDef * GPIO ;
+	char GPIO_Pin ; //numero de 0 a 15
+	char GPIO_Conf ; // v o i r c i de s sou s
+} MyGPIO_Struct_TypeDef ;
+
+
 #endif
 
 

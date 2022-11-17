@@ -57,19 +57,19 @@ void init (void){
 	MyTimer_Set_CI(&TimerStruct , PWM_ARR);
 }
 
-void rapport_pwm (TIM_TypeDef Timer, int canal, int Cycle){
+void rapport_pwm (MyTimer_Struct_TypeDef * Timer, int canal, int Cycle){
 		switch(canal){
 			case '1' :
-				Timer.CCR1 = PWM_ARR * Cycle / 100;
+				Timer ->Timer ->CCR1  = PWM_ARR * Cycle / 100;
 			break;
 			case '2' :
-				Timer.CCR2=PWM_ARR * Cycle / 100;
+				Timer ->Timer ->CCR2 =PWM_ARR * Cycle / 100;
 				break;
 			case '3' :
-				Timer.CCR3 = PWM_ARR * Cycle / 100;
+				Timer->Timer ->CCR3 = PWM_ARR * Cycle / 100;
 				break;
 			case '4' :
-				Timer.CCR4 = PWM_ARR * Cycle / 100;
+				Timer->Timer ->CCR4  = PWM_ARR * Cycle / 100;
 		break;
 	default:
 	break;

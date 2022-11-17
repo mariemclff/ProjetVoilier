@@ -2,13 +2,9 @@
 #ifndef MYTIM
 #define MYTIM
 #include "stm32f10x.h"
+#include  "macro.h"
 
-typedef struct
-{
-TIM_TypeDef * Timer ; // TIM1 à TIM4
-unsigned short ARR ;
-unsigned short PSC ;
-} MyTimer_Struct_TypeDef ;
+
 /*
 *****************************************************************************************
 * @brie f
@@ -25,6 +21,6 @@ void MyTimer_ActiveIT ( MyTimer_Struct_TypeDef * Timer , char Prio,void (* IT_fu
 void MyTimer_Set_CI ( MyTimer_Struct_TypeDef * Timer , int ARR ) ;
 void MyTimer_Set_CNT ( MyTimer_Struct_TypeDef * Timer , int init) ;
 int MyTimer_Get_CNT ( MyTimer_Struct_TypeDef * Timer ) ;
-void MyTimer_PWM( TIM_TypeDef * Timer , char Channel ); 
+void MyTimer_PWM( MyTimer_Struct_TypeDef * Timer , char Channel ); 
 
 #endif

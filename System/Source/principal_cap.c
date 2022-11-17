@@ -9,8 +9,7 @@
 
 
 
-int main ( void )
-{
+int maincap ( void ) {
 	//float arr, psc;
 	MyTimer_Struct_TypeDef  timer;
 	int alpha = 999 ;
@@ -27,6 +26,7 @@ int main ( void )
 	init();
 	alpha = MyTimer_Get_CNT ( &timer ) >> 2 ;
   Cycle = set_rap_cyc( alpha);
+	MyTimer_PWM(&timer,1);
 	rapport_pwm(&timer,1,Cycle);
 	
 	
