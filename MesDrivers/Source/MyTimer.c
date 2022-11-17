@@ -107,11 +107,11 @@ int MyTimer_Get_CNT ( MyTimer_Struct_TypeDef * Timer ) {
 	
 }
 
-void MyTimer_PWM( MyTimer_Struct_TypeDef * Timer , char Channel ){
+void MyTimer_PWM( TIM_TypeDef * Timer , char Channel ){
 
 	switch(Channel){
 	case '1' :
-		Timer->CCMR1 &= ~(0x110 << 4);
+		Timer ->CCMR1 &= ~(0x110 << 4);
 		Timer->CCMR1 |= (0x110 <<4);
 		Timer->CCER &= ~0;
 		Timer->CCER |= 1;
@@ -143,7 +143,3 @@ void MyTimer_PWM( MyTimer_Struct_TypeDef * Timer , char Channel ){
 }
 
 }
-
-
-
->>>>>>> 77494cd99c7220d1049ce648a8ddc368360ca8a0

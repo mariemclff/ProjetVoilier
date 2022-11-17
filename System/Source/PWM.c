@@ -49,24 +49,27 @@ int set_rap_cyc ( int angle_wind){
 
 
 void init (void){
-	MyGPIO_Init(GPIOCap) ;
-	MyTimer_Set_CI(TimerCap);
+	MyGPIO_Struct_TypeDef GPIOCapa;
+	MyTimer_Struct_TypeDef TimerStruct;
+	GPIOCapa.GPIO = GPIOCap;
+	MyGPIO_Init(&GPIOCapa) ;
+	TimerStruct.Timer = TimerCap;
+	MyTimer_Set_CI(&TimerStruct , PWM_ARR);
 }
 
-void rapport_pwm (TIM_TypeDef Timer, int canal){
-	int Cycle;
+void rapport_pwm (TIM_TypeDef Timer, int canal, int Cycle){
 		switch(canal){
 			case '1' :
-				Timer.CCR1 = ARR * Cycle / 100;
+				Timer.CCR1 = PWM_ARR * Cycle / 100;
 			break;
 			case '2' :
-				Timer -> CCR2 -> ARR * Cycle / 100;
+				Timer.CCR2=PWM_ARR * Cycle / 100;
 				break;
 			case '3' :
-				Timer -> CCR3 -> ARR * Cycle / 100;
+				Timer.CCR3 = PWM_ARR * Cycle / 100;
 				break;
 			case '4' :
-				Timer -> CCR4 -> ARR * Cycle / 100;
+				Timer.CCR4 = PWM_ARR * Cycle / 100;
 		break;
 	default:
 	break;
