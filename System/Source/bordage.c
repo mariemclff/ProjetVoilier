@@ -13,22 +13,22 @@ int main () {
 
 	//set up GPIOA et Pin sur lequel on prend I
 	//MyGPIO_Struct_TypeDef * GPIOStruct = {GPIOBordage, 5, In_Floating};
-		GPIOIndex.GPIO = GPIOBordage ;
-		GPIOIndex.GPIO_Pin = PinIndex ;
-		GPIOIndex.GPIO_Conf = In_Floating ;
-	
-		GPIOCH1.GPIO = GPIOBordage ;
-		GPIOCH1.GPIO_Pin = PinChannel1 ;
-		GPIOCH1.GPIO_Conf = In_Floating ;
-	
-		GPIOCH2.GPIO = GPIOBordage ;
-		GPIOCH2.GPIO_Pin = PinChannel2 ;
-		GPIOCH2.GPIO_Conf = In_Floating ;
+	GPIOIndex.GPIO = GPIOBordage ;
+	GPIOIndex.GPIO_Pin = PinIndex ;
+	GPIOIndex.GPIO_Conf = In_Floating ;
+
+	GPIOCH1.GPIO = GPIOBordage ;
+	GPIOCH1.GPIO_Pin = PinChannel1 ;
+	GPIOCH1.GPIO_Conf = In_Floating ;
+
+	GPIOCH2.GPIO = GPIOBordage ;
+	GPIOCH2.GPIO_Pin = PinChannel2 ;
+	GPIOCH2.GPIO_Conf = In_Floating ;
 	
 	//set up structure Timer
 
-		TimerStruct.Timer = TimerBordage  ;
-		TimerStruct.ARR = 1439 ;
+	TimerStruct.Timer = TimerBordage  ;
+	TimerStruct.ARR = 1439 ;
 	
 	 
 	MyGPIO_Init (&GPIOIndex) ;
@@ -54,7 +54,6 @@ int main () {
 		//fonction servo (alpha) qui bouge servo selon les critères demandés
 		
 	}
-	
-	return 0;
-
 }
+	
+

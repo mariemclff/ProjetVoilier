@@ -2,15 +2,10 @@
 #ifndef MYGPIO_H
 #define MYGPIO_H
 #include "stm32f10x.h"
+#include  "macro.h"
 
 
 
-
-typedef struct{
-	GPIO_TypeDef * GPIO ;
-	char GPIO_Pin ; //numero de 0 a 15
-	char GPIO_Conf ; // v o i r c i de s sou s
-} MyGPIO_Struct_TypeDef ;
 
 #define In_Floating 0x04// a comple te r
 #define In_PullDown 0x08  // a comple te r
@@ -28,4 +23,3 @@ void MyGPIO_Reset ( GPIO_TypeDef * GPIO , char GPIO_Pin ) ;
 void MyGPIO_Toggle ( GPIO_TypeDef * GPIO , char GPIO_Pin ) ;
 
 #endif
-
