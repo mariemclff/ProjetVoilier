@@ -144,6 +144,3 @@ void MyTimer_PWM( MyTimer_Struct_TypeDef * Timer , char Channel ){
 
 }
 
-
-
->>>>>>> 77494cd99c7220d1049ce648a8ddc368360ca8a0
