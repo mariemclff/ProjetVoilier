@@ -6,7 +6,7 @@
 
 
 
-
+//modifier valeurs pour qu'elles soient pas en héxa + 
 #define In_Floating 0x04// a comple te r
 #define In_PullDown 0x08  // a comple te r
 #define In_PullUp 0x08  // a comple te r

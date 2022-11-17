@@ -3,7 +3,7 @@
 #include  "PWM.h"
 #include  "macro.h"
 
-int main () {
+int mainbordage () {
 
 	int test = 0 ;
 	int alpha = 999 ;

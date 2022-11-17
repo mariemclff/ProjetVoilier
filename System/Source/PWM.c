@@ -48,14 +48,6 @@ int set_rap_cyc ( int angle_wind){
 		
 
 
-void init (void){
-	MyGPIO_Struct_TypeDef GPIOCapa;
-	MyTimer_Struct_TypeDef TimerStruct;
-	GPIOCapa.GPIO = GPIOCap;
-	MyGPIO_Init(&GPIOCapa) ;
-	TimerStruct.Timer = TimerCap;
-	MyTimer_Set_CI(&TimerStruct , PWM_ARR);
-}
 
 void rapport_pwm (MyTimer_Struct_TypeDef * Timer, int canal, int Cycle){
 		switch(canal){
