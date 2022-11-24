@@ -11,9 +11,9 @@
 #define In_PullDown 0x08  // a comple te r
 #define In_PullUp 0x08  // a comple te r
 #define In_Analog 0x00  // a comple te r
-#define Out_Ppull 0x02  // a comple te r
+#define Out_Ppull 0x01  // a comple te r
 #define Out_OD 0x06 // a comple te r
-#define AltOut_Ppull 0x14  // a comple te r
+#define AltOut_Ppull 9  // a comple te r
 #define AltOut_OD 0x10 // a comple te r
 
 void MyGPIO_Init ( MyGPIO_Struct_TypeDef * GPIOStructPtr ) ;

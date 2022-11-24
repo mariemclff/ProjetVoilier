@@ -6,9 +6,11 @@ void MyGPIO_Init ( MyGPIO_Struct_TypeDef * GPIOStructPtr ){
 RCC->APB2ENR |= (0x01 << 2) | (0x01 << 3) | (0x01 << 4) ; 
 	
 	if ( GPIOStructPtr->GPIO_Pin < 8 ){
-		GPIOStructPtr->GPIO -> CRL |= GPIOStructPtr->GPIO_Conf << GPIOStructPtr->GPIO_Pin*4 ;
+		GPIOStructPtr->GPIO -> CRL  &= ~ (0x0F << (GPIOStructPtr-> GPIO_Pin*4));
+		GPIOStructPtr->GPIO -> CRL |= GPIOStructPtr->GPIO_Conf << (GPIOStructPtr->GPIO_Pin*4) ;
 	} else {
-		GPIOStructPtr->GPIO -> CRH |= GPIOStructPtr->GPIO_Conf << (GPIOStructPtr->GPIO_Pin - 8)*4 ;
+			GPIOStructPtr->GPIO -> CRL  &= ~ (0x0F << (GPIOStructPtr-> GPIO_Pin*4));
+		GPIOStructPtr->GPIO -> CRH |= GPIOStructPtr->GPIO_Conf << (GPIOStructPtr->GPIO_Pin *4) ;
 	}
 }
 
