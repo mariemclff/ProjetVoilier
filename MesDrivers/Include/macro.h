@@ -8,6 +8,19 @@
 #define PinChannel1 6 //Channel1 PA6
 #define PinChannel2 7 //Channel2 PA7
 
+//dans la datasheet pages 29-30-31
+#define TxPin_UART1 9 //transmission
+#define RxPin_UART1 10 //réception
+#define GPIO_UART1 GPIOA
+
+#define TxPin_UART2 2
+#define RxPin_UART2 3
+#define GPIO_UART2 GPIOA
+
+#define TxPin_UART3 10
+#define RxPin_UART3 11
+#define GPIO_UART3 GPIOB
+
 // VALEURS ANGLES
 
 #define TimerCap TIM3

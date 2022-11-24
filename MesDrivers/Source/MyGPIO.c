@@ -3,7 +3,7 @@
 
 void MyGPIO_Init ( MyGPIO_Struct_TypeDef * GPIOStructPtr ){
 	
-RCC->APB2ENR |= (0x01 << 2) | (0x01 << 3) | (0x01 << 4) ; 
+	RCC->APB2ENR |= (0x01 << 2) | (0x01 << 3) | (0x01 << 4) ; 
 	
 	if ( GPIOStructPtr->GPIO_Pin < 8 ){
 		GPIOStructPtr->GPIO -> CRL |= GPIOStructPtr->GPIO_Conf << GPIOStructPtr->GPIO_Pin*4 ;
