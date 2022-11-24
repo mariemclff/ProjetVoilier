@@ -25,7 +25,7 @@ void MyUSART_Init (MyUART_Struct_TypeDef * Uart) {
 	//8 bits de données
 	Uart->Uart->CR1 &= ~USART_CR1_M; 
 	//1 bit de stop
-	Uart->Uart->CR2 &= USART_CR2_STOP; 
+	Uart->Uart->CR2 &= USART_CR2_STOP;
 	
 		//Réception des octets( Receiver enable)
 	Uart->Uart -> CR1 |= USART_CR1_RE ;
