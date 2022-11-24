@@ -9,8 +9,8 @@
 #include <stdlib.h>
 #include "bordage.h"
 
-int maincap ( int Cycle ) {
-	//float arr, psc;
+int set (){
+		//float arr, psc;
 	MyTimer_Struct_TypeDef  * timer;
 	MyGPIO_Struct_TypeDef * gpio;
 	int alpha = 999 ;
@@ -41,7 +41,11 @@ int maincap ( int Cycle ) {
 	//Cycle = set_rap_cyc ( alpha ) ;
 	
 	
-	rapport_pwm(timer,1,Cycle);
+}
+
+int maincap ( int Cycle ) {
+
+
 	
 	while(1);
 }

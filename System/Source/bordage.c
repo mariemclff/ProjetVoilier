@@ -3,15 +3,33 @@
 #include  "PWM.h"
 #include  "macro.h"
 #include "principal_cap.h"
+#include <math.h>
+#include <stdlib.h>
+
 int mainbordage () {
 
 	int test = 0 ;
 	int alpha = 999 ;
 	int cycle;
 	
+	//bordage : 
 	MyTimer_Struct_TypeDef TimerStruct ;
 	MyGPIO_Struct_TypeDef GPIOIndex , GPIOCH1 , GPIOCH2 ;
+	
+	//PWM
+	MyTimer_Struct_TypeDef  * timer;
+	MyGPIO_Struct_TypeDef * gpio;
 
+	gpio = malloc(sizeof(MyGPIO_Struct_TypeDef));
+	timer = malloc(sizeof(MyTimer_Struct_TypeDef));
+	
+	timer ->Timer  = TimerCap;
+	gpio->GPIO = GPIOCap;
+ 	gpio->GPIO_Pin = PinCapIn;
+	gpio->GPIO_Conf = AltOut_Ppull;
+	
+	
+	//bordage :
 	//set up GPIOA et Pin sur lequel on prend I
 	//MyGPIO_Struct_TypeDef * GPIOStruct = {GPIOBordage, 5, In_Floating};
 	GPIOIndex.GPIO = GPIOBordage ;
@@ -39,22 +57,28 @@ int mainbordage () {
 	MyTimer_Set_CI ( &TimerStruct , TimerStruct.ARR ) ;
 	MyTimer_Base_Start ( &TimerStruct ) ;
 	
+	//PWM : 
+	MyGPIO_Init(gpio);
+	MyTimer_Base_Init(timer);
+	MyTimer_Base_Start (timer ) ;
+//FIN PWM
+	
+	
 	while (test == 0) {
 		test = MyGPIO_Read ( GPIOIndex.GPIO , GPIOIndex.GPIO_Pin ) ;
 	}
 	
 	MyTimer_Set_CNT ( &TimerStruct , 0 ) ;
 	
-	while(1) {
+	while(1){
 		
 		//on divise par 4 le chiffre r&cupéré sur le compteur pour retrouver l'angle car l'ARR impose une précision au quart de degré
 		alpha = MyTimer_Get_CNT ( &TimerStruct ) >> 2 ;
 		
-		
 		cycle = set_rap_cyc ( alpha ) ;
-		maincap(cycle);
+		
+		rapport_pwm(timer,1,10);
 		//fonction servo (alpha) qui bouge servo selon les critères demandés
-	
 	}
 }
 	
