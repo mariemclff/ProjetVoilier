@@ -2,11 +2,12 @@
 #include  "MyTimer.h"
 #include  "PWM.h"
 #include  "macro.h"
-
+#include "principal_cap.h"
 int mainbordage () {
 
 	int test = 0 ;
 	int alpha = 999 ;
+	int cycle;
 	
 	MyTimer_Struct_TypeDef TimerStruct ;
 	MyGPIO_Struct_TypeDef GPIOIndex , GPIOCH1 , GPIOCH2 ;
@@ -49,10 +50,11 @@ int mainbordage () {
 		//on divise par 4 le chiffre r&cupéré sur le compteur pour retrouver l'angle car l'ARR impose une précision au quart de degré
 		alpha = MyTimer_Get_CNT ( &TimerStruct ) >> 2 ;
 		
-		set_rap_cyc ( alpha ) ;
 		
+		cycle = set_rap_cyc ( alpha ) ;
+		maincap(cycle);
 		//fonction servo (alpha) qui bouge servo selon les critères demandés
-		
+	
 	}
 }
 	
