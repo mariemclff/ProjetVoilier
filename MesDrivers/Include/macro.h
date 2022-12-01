@@ -6,7 +6,7 @@
 #define GPIOBordage GPIOA
 #define PinIndex 8 //PA8 Signal I
 #define PinChannel1 0 //Channel1 PA0 Signal B
-#define PinChannel2 7 //Channel2 PA7 Signal A
+#define PinChannel2 1 //Channel2 PA7 Signal A devient PA1
 
 //dans la datasheet pages 29-30-31
 #define TxPin_UART1 9 //transmission
