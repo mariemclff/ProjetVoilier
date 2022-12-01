@@ -19,7 +19,7 @@ int MyGPIO_Read ( GPIO_TypeDef * GPIO , char GPIO_Pin ){
 	rrdata = rrdata & (1<<GPIO_Pin);
 	
 	return rrdata >> GPIO_Pin;
-	//return GPIO->IDR & (1<<GPIO_Pin) >> GPIO_Pin;
+	return GPIO->IDR & (1<<GPIO_Pin) >> GPIO_Pin;
 }
 	
 void MyGPIO_Set ( GPIO_TypeDef * GPIO , char GPIO_Pin ) {

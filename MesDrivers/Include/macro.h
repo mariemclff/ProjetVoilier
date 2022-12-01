@@ -25,9 +25,9 @@
 
 #define TimerCap TIM3
 #define GPIOCap (GPIOA)
-#define PinCapIn 6 //PA6 pour l'entrée
-#define PinCapOut1 9 //PC9 pour une des sorties
-#define PinCapOut2 10 //PC10 pour l'autre
+#define PinCapIn 6 //PA6 pour l'entrée PWM
+#define PinCapOut1 9 //PA9 pour une des sorties 
+#define PinCapOut2 10 //PA10 pour l'autre
 
 
 
@@ -42,7 +42,7 @@ unsigned short PSC ;
 typedef struct{
 	GPIO_TypeDef * GPIO ;
 	char GPIO_Pin ; //numero de 0 a 15
-	char GPIO_Conf ; // v o i r c i de s sou s
+	char GPIO_Conf ; 
 } MyGPIO_Struct_TypeDef ;
 
 

@@ -7,14 +7,14 @@
 
 
 //modifier valeurs pour qu'elles soient pas en héxa + 
-#define In_Floating 0x04// a comple te r
-#define In_PullDown 0x08  // a comple te r
-#define In_PullUp 0x08  // a comple te r
-#define In_Analog 0x00  // a comple te r
-#define Out_Ppull 0x01  // a comple te r
-#define Out_OD 0x06 // a comple te r
-#define AltOut_Ppull 9  // a comple te r
-#define AltOut_OD 0x10 // a comple te r
+#define In_Floating 4
+#define In_PullDown 8  
+#define In_PullUp 8 
+#define In_Analog 0 
+#define Out_Ppull 1
+#define Out_OD 5 
+#define AltOut_Ppull 9
+#define AltOut_OD 13
 
 void MyGPIO_Init ( MyGPIO_Struct_TypeDef * GPIOStructPtr ) ;
 int MyGPIO_Read ( GPIO_TypeDef * GPIO , char GPIO_Pin ) ; // re nv oie 0 ou a u t re chose d i f f e r e n t de 0

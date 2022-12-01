@@ -6,7 +6,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-int mainbordage () {
+void mainbordage () {
 
 	int test = 0 ;
 	int alpha = 999 ;
@@ -61,7 +61,7 @@ int mainbordage () {
 	MyGPIO_Init(gpio);
 	MyTimer_Base_Init(timer);
 	MyTimer_Base_Start (timer ) ;
-//FIN PWM
+
 	
 	
 	while (test == 0) {

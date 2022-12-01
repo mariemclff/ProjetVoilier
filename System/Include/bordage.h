@@ -1,1 +1,1 @@
-int mainbordage () ;
+void mainbordage () ;
