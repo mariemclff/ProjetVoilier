@@ -77,7 +77,7 @@ int mainbordage () {
 		
 		cycle = set_rap_cyc ( alpha ) ;
 		
-		rapport_pwm(timer,1,10);
+		rapport_pwm(timer,1,5);
 		//fonction servo (alpha) qui bouge servo selon les critères demandés
 	}
 }
