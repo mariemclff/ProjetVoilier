@@ -11,7 +11,8 @@
 
  
 
-int main ( void ) {
+ int main ( void ) {
 	//mainbordage();
-	mainbordage();
+	 mainbordage();
+	//set();
 }

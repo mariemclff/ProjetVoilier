@@ -22,6 +22,15 @@ int set (){
 	psc=(0.5*72.0e6)/(arr+1.0);
 	arr=(float)(floor(0.5*72.0e6/(psc+1.0)));
 	*/
+	timer ->Timer  = TimerCap;
+	gpio->GPIO = GPIOCap;
+ 	gpio->GPIO_Pin = PinCapIn;
+	gpio->GPIO_Conf = AltOut_Ppull;
+	MyGPIO_Init(gpio);
+	MyTimer_Base_Init(timer);
+
+
+	/*
 	
 	gpio->GPIO = GPIOA;
  	gpio->GPIO_Pin = 6;
@@ -34,18 +43,20 @@ int set (){
 	MyTimer_Base_Init(timer);
 	MyTimer_Base_Start (timer ) ;
 
-	
+	*/
 	
 	//alpha = MyTimer_Get_CNT ( timer ) >> 2 ;
 	//alpha = 70;
 	//Cycle = set_rap_cyc ( alpha ) ;
 	
-	return 0;
-}
-
-int maincap ( int Cycle ) {
-
-
-	
+	//alpha = MyTimer_Get_CNT ( &TimerStruct ) >> 2 ;
+		
+//	cycle = set_rap_cyc ( alpha ) ;
+		
+	rapport_pwm(timer,1,5);
+		MyTimer_Base_Start (timer ) ;
 	while(1);
+
 }
+
+

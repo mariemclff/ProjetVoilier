@@ -60,7 +60,7 @@ void mainbordage () {
 	//PWM : 
 	MyGPIO_Init(gpio);
 	MyTimer_Base_Init(timer);
-	MyTimer_Base_Start (timer ) ;
+	
 
 	
 	
@@ -77,9 +77,11 @@ void mainbordage () {
 		
 		cycle = set_rap_cyc ( alpha ) ;
 		
-		rapport_pwm(timer,1,6);
+		rapport_pwm(timer,1,cycle);
+		MyTimer_Base_Start (timer ) ;
+
 		//fonction servo (alpha) qui bouge servo selon les critères demandés
-	}
+	//}
 }
 	
-
+}
