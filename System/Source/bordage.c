@@ -69,17 +69,17 @@ void mainbordage () {
 	}
 	
 	MyTimer_Set_CNT ( &TimerStruct , 0 ) ;
-	
+		
 	while(1){
 		
 		//on divise par 4 le chiffre r&cupéré sur le compteur pour retrouver l'angle car l'ARR impose une précision au quart de degré
-		alpha = MyTimer_Get_CNT ( &TimerStruct ) >> 2 ;
+		alpha = MyTimer_Get_CNT ( &TimerStruct )		>> 2 ;
 		
 		cycle = set_rap_cyc ( alpha ) ;
 		
 		rapport_pwm(timer,1,cycle);
-		MyTimer_Base_Start (timer ) ;
-
+	
+MyTimer_Base_Start (timer ) ;
 		//fonction servo (alpha) qui bouge servo selon les critères demandés
 	//}
 }

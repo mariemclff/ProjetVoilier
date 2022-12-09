@@ -53,7 +53,7 @@ int set (){
 		
 //	cycle = set_rap_cyc ( alpha ) ;
 		
-	rapport_pwm(timer,1,5);
+	rapport_pwm(timer,1,10);
 		MyTimer_Base_Start (timer ) ;
 	while(1);
 

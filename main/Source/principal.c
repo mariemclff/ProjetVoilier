@@ -11,8 +11,9 @@
 #include "MyUSART.h"
  
 
-int main ( void ) {
-	maintest();
-	//mainbordage();
+ int main ( void ) {
+//	maintest();
+	mainbordage();
+	//set();
 
 }
