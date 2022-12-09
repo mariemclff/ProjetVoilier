@@ -1,0 +1,91 @@
+typedef struct {
+	USART_TypeDef * Uart ; // USART1 à USART3
+	int Debit;
+	int Prio;
+} MyUART_Struct_TypeDef ;
+
+//Initialisation de l'USART
+void MyUSART_Init( MyUART_Struct_TypeDef * Uart);
+
+//Réception des octets 
+#define MyUSART_Reception() ( USART1 -> CR1 |= USART_CR1_RE )
+
+//Envoyer(transmettre) des octets
+#define MyUSART_Transmission() ( USART1 -> CR1 |= USART_CR1_TE )
+
+
+
+char MyUSART_Receive(USART_TypeDef * Uart);
+
+//Envoyer des bits
+void MyUSART_Send_Byte(USART_TypeDef * Uart, char Byte);
+
+//Envoyer des string
+void MyUSART_Send_String(USART_TypeDef * Uart, char* Data);
+
+
+//
+
+#endif
+
+---TOUS MYUSART
+
+#include "MyUSART.h"
+#include "MyGPIO.h"
+
+
+static void (*HandlerUart1)(void);
+static void (*HandlerUart2)(void);
+static void (*HandlerUart3)(void);
+
+//Initialisation de l'USART
+void MyUSART_Init (MyUART_Struct_TypeDef * Uart) {
+	if (Uart->Uart == USART1){
+		//validation  horloge USART1
+		RCC->APB2ENR |= RCC_APB2ENR_USART1EN;
+		//on fixe le baud rate
+	
+		Uart->Uart->BRR |= 468 << 4; // Fixe le baud rate à 9600bps
+    Uart->Uart->BRR |= 75; // Fixe le baud rate à 9600bps
+	
+	}
+	
+	if (Uart->Uart == USART3){
+		RCC -> APB1ENR |= RCC_APB1ENR_USART3EN;
+		
+		Uart->Uart->BRR |= 234 << 4; // Fixe le baud rate à 9600bps
+    Uart->Uart->BRR |= 375; // Fixe le baud rate à 9600bps
+	
+	}
+	
+	//activation de l'UART
+	Uart->Uart ->CR1 |= USART_CR1_UE;
+	//8 bits de données
+	Uart->Uart->CR1 &= ~USART_CR1_M; 
+	//1 bit de stop
+	Uart->Uart->CR2 &= USART_CR2_STOP;
+	
+		//Réception des octets( Receiver enable)
+	Uart->Uart -> CR1 |= USART_CR1_RE ;
+		//Tansmettre des octets (Transmitter enable)
+	Uart->Uart -> CR1 |= USART_CR1_TE ;
+}
+
+void GPIO_TX_Config(void) {
+	My
+	
+}
+
+
+//Recevoir des bits (data du voilier)
+char MyUSART_Receive_Byte(USART_TypeDef * Uart){
+	return Uart->DR;
+
+}
+
+
+//Envoyer des bits (data au voilier (vitesse, etc..))
+	void MyUSART_Send_Byte(USART_TypeDef * Uart, char Byte){
+		Uart->DR =  Byte;
+		
+}

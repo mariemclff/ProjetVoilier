@@ -1,88 +1,88 @@
 #include "MyUSART.h"
+#include "MyGPIO.h"
 
-static void (*HandlerUart1)(void);
-static void (*HandlerUart2)(void);
-static void (*HandlerUart3)(void);
+void (*		IT_function_UART1)(void);
+void (*		IT_function_UART2)(void);
+void (*		IT_function_UART3)(void);
 
-//Initialisation de l'USART
-void MyUSART_Init (MyUART_Struct_TypeDef * Uart) {
-	if (Uart->Uart == USART1){
-		//validation  horloge USART1
-		RCC->APB2ENR |= RCC_APB2ENR_USART1EN;
-		//on fixe le baud rate
-		Uart->Uart->BRR = 72000000/(Uart->Debit);}
-	
-	if (Uart->Uart == USART2){
-		RCC -> APB1ENR |= RCC_APB1ENR_USART2EN;
-		Uart->Uart->BRR = 36000000/(Uart->Debit);}
-	
-	if (Uart->Uart == USART3){
-		RCC -> APB1ENR |= RCC_APB1ENR_USART3EN;
-		Uart->Uart->BRR = 36000000/(Uart->Debit);}
-	
-	//activation de l'UART
-	Uart->Uart ->CR1 |= USART_CR1_UE;
-	//8 bits de données
-	Uart->Uart->CR1 &= ~USART_CR1_M; 
-	//1 bit de stop
-	Uart->Uart->CR2 &= USART_CR2_STOP;
-	
-		//Réception des octets( Receiver enable)
-	Uart->Uart -> CR1 |= USART_CR1_RE ;
-		//Tansmettre des octets (Transmitter enable)
-	Uart->Uart -> CR1 |= USART_CR1_TE ;
-}
+MyGPIO_Struct_TypeDef GPIO_Tx = { GPIO_UART3, TxPin_UART3, AltOut_Ppull}; //Envoi
 
-//Activation interupteur
-void MyUSART_Active_IT (MyUART_Struct_TypeDef * MyUart, void(*IT_function) (void)) {
-	MyUart->Uart->CR1 |= USART_CR1_RXNEIE;
-	
-	if (MyUart->Uart == USART1){
-		HandlerUart1 = IT_function;
-		NVIC->IP[USART1_IRQn] = MyUart->Prio <<4;
-		NVIC->ISER[1] |= NVIC_ISER_SETENA_5;}
-	
-	if (MyUart->Uart == USART2){
-		HandlerUart2 = IT_function;
-		NVIC->IP[USART2_IRQn] = MyUart->Prio <<4;
-		NVIC->ISER[1] |= NVIC_ISER_SETENA_6;}
-	
-	if (MyUart->Uart == USART3){
-		HandlerUart3 = IT_function;
-		NVIC->IP[USART3_IRQn] = MyUart->Prio <<4;
-		NVIC->ISER[1] |= NVIC_ISER_SETENA_7;}
-}
+MyGPIO_Struct_TypeDef GPIO_Rx = { GPIO_UART3, RxPin_UART3, In_Floating}; //Reception
 
-//Recevoir des bits (data du voilier)
-char MyUSART_Receive_Byte(USART_TypeDef * Uart){
-	return Uart->DR;}
-
-void USART1_IRQHandler(void){
-	 // On remet le flag à 0
-	USART1->SR &= ~USART_SR_RXNE;
-	//Message = USART1->DR;
-	if (HandlerUart1 !=0){
-	(*HandlerUart1) ();}
+void MyUSART_Init (USART_TypeDef * USART, int BaudRate){
+	
+	//Baud Rate and Clock Activation
+	if (USART == USART1){
+		RCC ->APB2ENR |= RCC_APB2ENR_USART1EN;
+		USART->BRR = (int) (72000000/(BaudRate));
+		MyGPIO_Init(&GPIO_Tx);
+		MyGPIO_Init(&GPIO_Rx);
+		//USART->BRR = BaudRate ;
 	}
-
-void USART2_IRQHandler(void){
-	// On remet le flag à 0
-	USART2->SR &= ~USART_SR_RXNE; 
-	//Message = USART2->DR;
-	if (HandlerUart2 !=0){
-	(*HandlerUart2) ();}
+	else if (USART == USART2){
+		RCC->APB1ENR |= RCC_APB1ENR_USART2EN;
+		USART->BRR |= (int) (36000000/(BaudRate));
 	}
-
-void USART3_IRQHandler(void){
-	 // On remet le flag à 0
-	USART3->SR &= ~USART_SR_RXNE;
-	//Message = USART3->DR;
-	if (HandlerUart3 !=0){
-	(*HandlerUart3) ();}
+	else if (USART == USART3){
+		RCC->APB1ENR |= RCC_APB1ENR_USART3EN;
+		USART->BRR |= (int) (36000000/(BaudRate));
+	}
+	
+		//Enable USART
+	USART->CR1 |= USART_CR1_UE;
+	
+	//Word Length : 0: 1 Start bit, 8 Data bits, n Stop bit
+	USART->CR1 &= ~(USART_CR1_M);
+	
+	//STOP bits : 1 stop bit
+	USART->CR2 &= ~(USART_CR2_STOP);
+	
+	//Transmitter Enable
+	USART->CR1 |= USART_CR1_TE;
+	
+	//Receiver Enable
+	USART->CR1 |= USART_CR1_RE;
+	
 }
 
-//Envoyer des bits (data au voilier (vitesse, etc..))
-	void MyUSART_Send_Byte(USART_TypeDef * Uart, char Byte){
-		Uart->DR =  Byte;
+void MyUSART_Send (USART_TypeDef * USART, char Data){
+
+		while (!(USART->SR & USART_SR_TXE));
+		USART->DR = Data;
 }
 
+
+void MyUSART_Send_Str (USART_TypeDef * USART, char* Data){
+	while (*Data != '\0'){
+		MyUSART_Send(USART, *Data);
+		Data++;
+	}
+}
+
+
+char MyUSART_Receive (USART_TypeDef * USART){
+	return (signed char) USART->DR ;
+}
+
+void MyUSART_ActiveIT (USART_TypeDef * USART, uint32_t Prio, void (*IT_function)(void)){
+	
+	USART->CR1 |= USART_CR1_RXNEIE;
+	
+	if (USART == USART1){
+		NVIC_EnableIRQ(USART1_IRQn);
+		NVIC_SetPriority(USART1_IRQn, Prio);
+		IT_function_UART1=IT_function;
+		
+	}
+	else if(USART == USART2){
+		NVIC_EnableIRQ(USART2_IRQn);
+		NVIC_SetPriority(USART2_IRQn, Prio);
+		IT_function_UART2=IT_function;
+	}
+	else if(USART == USART3){
+		NVIC_EnableIRQ(USART3_IRQn);
+		NVIC_SetPriority(USART3_IRQn, Prio);
+		IT_function_UART3=IT_function;
+	}
+	
+}
