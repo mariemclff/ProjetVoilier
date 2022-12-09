@@ -9,16 +9,12 @@
 #define PinChannel2 1 //Channel2 PA7 Signal A devient PA1
 
 //dans la datasheet pages 29-30-31
-#define TxPin_UART1 9 //transmission
-#define RxPin_UART1 10 //réception
-#define GPIO_UART1 GPIOA
+//#define TxPin_UART1 9 //transmission
+//#define RxPin_UART1 10 //réception
+//#define GPIO_UART1 GPIOA
 
-#define TxPin_UART2 2
-#define RxPin_UART2 3
-#define GPIO_UART2 GPIOA
-
-#define TxPin_UART3 10
-#define RxPin_UART3 11
+#define TxPin_UART3 9 // pin transmission
+#define RxPin_UART3 10 //pin réception
 #define GPIO_UART3 GPIOB
 
 // VALEURS ANGLES

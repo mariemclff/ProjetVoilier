@@ -5,29 +5,24 @@
 #include "MyGPIO.h"
 #include "macro.h"
 
-typedef struct {
-	USART_TypeDef * Uart ; // USART1 à USART3
-	int Debit;
-	int Prio;
-} MyUART_Struct_TypeDef ;
+//On utilise le type USART_TypeDef
 
-//Initialisation de l'USART
-void MyUSART_Init( MyUART_Struct_TypeDef * Uart);
+//Initialisation de l'USART; procédure d'initialisation page 797  du manuel
 
-//Réception des octets 
-#define MyUSART_Reception() ( USART1 -> CR1 |= USART_CR1_RE )
+void MyUSART_Init( USART_TypeDef * USART, int BaudRate) ;
 
-//Envoyer(transmettre) des octets
-#define MyUSART_Transmission() ( USART1 -> CR1 |= USART_CR1_TE )
+//La fonction UART_Init doit avoir ete lancee au prealable
 
-//Attendre pour recevoir les bits 
-#define MyUSART_WaitOnSend(muart) ((muart.Uart->SR & USART_SR_TXE) == 0)
-char MyUSART_Receive_Byte(USART_TypeDef * Uart);
+void MyUSART_Active (USART_TypeDef * USART, uint32_t Prio, void (*IT_function)(void)) ;
 
-//Envoyer des bits
-void MyUSART_Send_Byte(USART_TypeDef * Uart, char Byte);
+// Fonction pour envoi de données
 
-//Activer Interruption
-void MyUSART_Active_IT (MyUART_Struct_TypeDef * Uart, void(*IT_function) (void));
+void MyUSART_Send (USART_TypeDef * USART, char Data) ;
+
+// Fonction pour envoi de String
+void MyUSART_Send_Str (USART_TypeDef * USART, char* Data) ;
+
+//Reception de données
+char MyUSART_Receive (USART_TypeDef * USART) ;
 
 #endif
