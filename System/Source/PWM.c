@@ -6,9 +6,12 @@ PSC prescaler permet de ralentir la freq pour trouver un diviseur commun*/
 #include "MyGPIO.h"
 #include "MyTimer.h"
 #include "macro.h"
-#define PWM_RAPPORT_CYCLIQUE 1440000
-#define PWM_ARR 99
-#define PWM_PSC (PWM_RAPPORT_CYCLIQUE/PWM_ARR)
+//#define PWM_FREQ 1439999
+//#define PWM_ARR 99
+//#define PWM_PSC (PWM_FREQ/PWM_ARR) -1
+
+#define PWM_ARR 0xe0F
+#define PWM_PSC 0
 
 int set_rap_cyc ( int angle_wind){
 	int cycle ;
@@ -76,16 +79,16 @@ void rapport_pwm (MyTimer_Struct_TypeDef * Timer, int canal, int Cycle){
 		Timer->Timer->ARR = PWM_ARR;
 		switch(canal){
 			case 1 :
-				Timer ->Timer ->CCR1  = PWM_ARR * Cycle / 100;
+				Timer ->Timer ->CCR1  = (PWM_ARR) * Cycle / 100;
 			break;
 			case 2 :
-				Timer ->Timer ->CCR2 =PWM_ARR * Cycle / 100;
+				Timer ->Timer ->CCR2 =(PWM_ARR+1) * Cycle / 100;
 				break;
 			case 3 :
-				Timer->Timer ->CCR3 = PWM_ARR * Cycle / 100;
+				Timer->Timer ->CCR3 = (PWM_ARR+1) * Cycle / 100;
 				break;
 			case 4 :
-				Timer->Timer ->CCR4  = PWM_ARR * Cycle / 100;
+				Timer->Timer ->CCR4  = (PWM_ARR+1) * Cycle / 100;
 			break;
 	}
 }

@@ -1,5 +1,5 @@
-int maintransmit() {
+//int maintransmit() {
 
-	while(1)
+	//while(1)
 
-}
+//}
